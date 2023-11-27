@@ -23,14 +23,12 @@ from typing import (
     runtime_checkable,
 )
 
-
 _D = TypeVar("_D", bound="Date")
 _GMaybeTZT = TypeVar("_GMaybeTZT", bound=None | _tzinfo, covariant=True)
 _GMaybeTZDT = TypeVar("_GMaybeTZDT", bound=None | _tzinfo, covariant=True)
 _PMaybeTZ = TypeVar("_PMaybeTZ", bound=None | _tzinfo)
 _FuncTZ = TypeVar("_FuncTZ", bound=_tzinfo)
 _FuncOptionalTZ = TypeVar("_FuncOptionalTZ", bound=None | _tzinfo)
-
 
 Self = TypeVar("Self")
 AnyDateTime = TypeVar("AnyDateTime", bound="DateTime[_tzinfo | None]")
@@ -43,7 +41,6 @@ if sys.version_info >= (3, 9):
         week: int
         weekday: int
 
-
 if not TYPE_CHECKING:
 
     class _CheckableProtocolMeta(type(Protocol)):
@@ -52,6 +49,7 @@ if not TYPE_CHECKING:
             'AwareDateTime' objects are datetimes with a timezone.
             """
             return self._subclass_check_hook(instance)
+
 
     class _CheckableProtocol(Protocol, metaclass=_CheckableProtocolMeta):
         pass
